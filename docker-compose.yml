@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/home/backend
+    ports:
+      - "8080:8000"
+    environment:
+      TZ: Asia/Seoul
+
+
+networks:
+  default:
+    external:
+      # DB와 연결할 네트워크
+      name: dress-checker-docker_default
+      
