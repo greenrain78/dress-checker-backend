@@ -3,10 +3,12 @@ from fastapi import FastAPI
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
-
+from fastapi_sqlalchemy import DBSessionMiddleware
+from env import DB_URL
 app = FastAPI()
 
 app.add_middleware(HTTPSRedirectMiddleware)
+app.add_middleware(DBSessionMiddleware, db_url=DB_URL)
 
 @app.get("/hello")
 async def homepage(req: Request):

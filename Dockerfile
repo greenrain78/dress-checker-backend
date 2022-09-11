@@ -21,6 +21,7 @@ WORKDIR /home/backend
 
 # 파이썬 라이브러리 설치
 COPY requirements.txt /home/backend
+RUN pip install --upgrade pip 
 RUN pip install -r requirements.txt
 
 # 개발용으로 entrypoint.sh 파일를 연결
